@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
 			if (Last == null)
 				newObj.transform.position = transform.position - transform.up;
 			else
-				newObj.transform.position = Last.transform.position;
+				newObj.transform.position = ((Tail)Last.GetComponent("Tail")).getDirection(-0.5f);
 			
 			if (Last == null) {
 				((Tail)newObj.GetComponent ("Tail")).p = gameObject;
@@ -45,4 +45,12 @@ public class Player : MonoBehaviour {
 		}
 
 	}
+	void OnTriggerEnter2D(Collider2D other) {
+		Debug.Log("COlision");
+	}
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		Debug.Log("COlision");
+	}
+
 }
