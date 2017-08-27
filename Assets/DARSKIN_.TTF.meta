@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b05eacc3a04e2de45b34eaebf8484db1
+timeCreated: 1503618548
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Dar Skin
+  fontNames:
+  - Dar Skin
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
