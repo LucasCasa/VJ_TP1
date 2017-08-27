@@ -28,8 +28,8 @@ public class GameLoader : MonoBehaviour {
             Debug.Log("Seteo un nuevo single");
             GameObject.Find("Player2").SetActive(false);
             multiplayer = false;
-            p1Text.text = ("Score");
-            p2Text.text = "";
+            p1Text.text = ("Score: ");
+            GameObject.Find("BlueScore").SetActive(false);
         }
         /*LineRenderer lr = GameObject.Find("Wall").GetComponent<LineRenderer>();
         lr.positionCount = 5;
@@ -89,10 +89,10 @@ public class GameLoader : MonoBehaviour {
 
     void OnGUI() {
         if (multiplayer) {
-            p1Text.text = ("Red " + player1.score);
-            p2Text.text = ("Blue " + player2.score);
+            p1Text.text = ("Red: " + player1.score);
+            p2Text.text = ("Blue: " + player2.score);
         } else {
-            p1Text.text = ("Score " + player1.score);
+            p1Text.text = ("Score: " + player1.score);
         }
     }
 }

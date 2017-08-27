@@ -11,11 +11,13 @@ public class Buttons : MonoBehaviour{
 	// Use this for initialization
 	void Start () {
         starting = GameObject.Find("Starting");
-        starting.SetActive(true);
-        hosting = GameObject.Find("Hosting");
-        hosting.SetActive(false);
-        joining = GameObject.Find("Joining");
-        joining.SetActive(false);
+        if (starting != null) {
+            starting.SetActive(true);
+            hosting = GameObject.Find("Hosting");
+            hosting.SetActive(false);
+            joining = GameObject.Find("Joining");
+            joining.SetActive(false);
+        }
 
     }
 	
@@ -36,6 +38,10 @@ public class Buttons : MonoBehaviour{
     public void goToMenu() {
         SceneManager.LoadScene("menu");
         Destroy(GameObject.Find("Mode Saver"));
+    }
+
+    public void Quit() {
+        Application.Quit();
     }
 
     public void Host() {

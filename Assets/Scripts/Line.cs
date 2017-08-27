@@ -30,11 +30,12 @@ public class Line : MonoBehaviour {
 
         points.Add(head.position);
         if (points.Count > h.size) {
-            points.RemoveAt(0);
-            for(int i = 0; i < points.Count; i++) {
+            ln.positionCount = points.Count-1;
+            for (int i = 0; i < points.Count-1; i++) {
                 ln.SetPosition(i, points[i]);
             }
-        }else {
+            points.RemoveAt(0);
+        } else {
             ln.positionCount = points.Count;
             ln.SetPosition(points.Count - 1, head.position);
         }
