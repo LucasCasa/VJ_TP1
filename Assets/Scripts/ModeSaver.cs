@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ModeSaver : MonoBehaviour {
     public bool singlePlayer = false;
-    public bool player1Won = false;
+    public int whoWon = 0;
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(transform.gameObject);

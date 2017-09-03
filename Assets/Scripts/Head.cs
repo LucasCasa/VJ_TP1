@@ -24,7 +24,7 @@ public class Head : MonoBehaviour {
 	void FixedUpdate(){
 		transform.Translate (Vector3.up * speed* Time.fixedDeltaTime, Space.Self);
 		transform.Rotate (horizontal * Vector3.forward * rotationSpeed * Time.fixedDeltaTime);
-        NetworkManager.getInstance().Send(transform.position, transform.rotation);
+        //NetworkManager.getInstance().Send(transform.position, transform.rotation);
 	}
 
 	void OnTriggerEnter2D(Collider2D other){

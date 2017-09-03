@@ -8,17 +8,25 @@ public class EndManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         ModeSaver ms = GameObject.Find("Mode Saver").GetComponent<ModeSaver>();
-        if (!ms.singlePlayer) {
-            if (ms.player1Won) {
-                text.text = "Red wins";
-                text.color = Color.red;
-            }
-            else {
-                text.text = "Blue wins";
-                text.color = Color.cyan;
-            }
-        } else {
+        if (ms.singlePlayer) {
             text.text = "Loser";
+            
+        } else {
+            switch(ms.whoWon) {
+                case 1:
+                    text.text = "Red wins";
+                    text.color = Color.red;
+                    break;
+                case 2:
+                    text.text = "Blue wins";
+                    text.color = Color.cyan;
+                    break;
+                case 0:
+                    text.text = "Draw";
+                    text.color = Color.white;
+                    break;
+
+            }
         }
 	    
 	}

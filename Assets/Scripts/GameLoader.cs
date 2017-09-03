@@ -8,11 +8,16 @@ public class GameLoader : MonoBehaviour {
     bool multiplayer;
     public Head player1;
     public Head player2;
+    public GameObject p1;
+    public Line t;
     public Text p1Text;
     public Text p2Text;
+    public GameObject paused;
+    public int send = 0;
 	// Use this for initialization
 	void Start () {
-        
+        paused = GameObject.Find("Paused");
+        paused.SetActive(false);
     }
 	void Awake() {
 
@@ -26,11 +31,12 @@ public class GameLoader : MonoBehaviour {
 
         } else {
             Debug.Log("Seteo un nuevo single");
-            GameObject.Find("Player2").SetActive(false);
+           // GameObject.Find("Player2").SetActive(false);
             multiplayer = false;
             p1Text.text = ("Score: ");
             GameObject.Find("BlueScore").SetActive(false);
         }
+        GameObject.Find("Audio Source").GetComponent<AudioSource>().Play();
         /*LineRenderer lr = GameObject.Find("Wall").GetComponent<LineRenderer>();
         lr.positionCount = 5;
         float min = Mathf.Min(Screen.width, Screen.height);
@@ -54,39 +60,52 @@ public class GameLoader : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        if (multiplayer) {
-            if(player1.score > player2.score + 10) {
-                GameObject.Find("Mode Saver").GetComponent<ModeSaver>().player1Won = true;
-                SceneManager.LoadScene("end");
-            }else if(player2.score > player1.score + 10) {
-                GameObject.Find("Mode Saver").GetComponent<ModeSaver>().player1Won = false;
-                SceneManager.LoadScene("end");
-            }
-            if (player1.isDead) {
-                GameObject.Find("Mode Saver").GetComponent<ModeSaver>().player1Won = false;
-                SceneManager.LoadScene("end");
-            }
-            else if (player2.isDead) {
-                GameObject.Find("Mode Saver").GetComponent<ModeSaver>().player1Won = true;
-                SceneManager.LoadScene("end");
-            }
-        } else {
-            if (player1.isDead) {
-                GameObject.Find("Mode Saver").GetComponent<ModeSaver>().player1Won = false;
-                SceneManager.LoadScene("end");
-            }
-        }
+        CheckEnd();
         if (Input.GetKeyDown(KeyCode.P)) {
             if(Time.timeScale == 0) {
                 Time.timeScale = 1;
-            }
-            else {
+                paused.SetActive(false);
+            } else {
                 Time.timeScale = 0;
+                paused.SetActive(true);
             }
             
         }
+        
 	}
 
+    void CheckEnd() {
+        bool p1 = false;
+        bool p2 = false;
+        if(player1.score > player2.score + 10 || player2.isDead) {
+            p1 = true;
+        }
+        if(player2.score > player1.score + 10 || player1.isDead){
+            p2 = true;
+        }
+        if (p2 || p1) {
+            if (!p1) {
+                GameObject.Find("Mode Saver").GetComponent<ModeSaver>().whoWon = 2;
+            } else if (!p2) {
+                GameObject.Find("Mode Saver").GetComponent<ModeSaver>().whoWon = 1;
+            } else {
+                GameObject.Find("Mode Saver").GetComponent<ModeSaver>().whoWon = 0;
+            }
+            GameObject.Find("Audio Source").GetComponent<AudioSource>().Stop();
+            SceneManager.LoadScene("end");
+        }
+    }
+    private void FixedUpdate() {
+        send++;
+        if (send == 1) {
+            Packet p = Packet.Obtain();
+            MarshalingManager.Marshall(p1, t, p);
+            p.buffer.Flip();
+            NetworkManager.getInstance().getChannel().Send(p);
+            p.Free();
+            send = 0;
+        }
+    }
     void OnGUI() {
         if (multiplayer) {
             p1Text.text = ("Red: " + player1.score);

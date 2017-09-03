@@ -6,7 +6,7 @@ using UnityEngine;
 public class Line : MonoBehaviour {
 	LineRenderer ln;
 	EdgeCollider2D col;
-	List<Vector2> points;
+	public List<Vector2> points;
 	public Transform head;
     public Head h;
 	public float pointsSpacing = 0.26f;
