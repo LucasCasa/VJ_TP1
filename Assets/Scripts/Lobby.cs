@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PollSocket : MonoBehaviour {
-    public GameObject play;
-    public StupidLine l;
+public class Lobby : MonoBehaviour {
+
 	// Use this for initialization
 	void Start () {
-        DontDestroyOnLoad(transform.gameObject);	
+		
 	}
 	
 	// Update is called once per frame
@@ -16,8 +15,10 @@ public class PollSocket : MonoBehaviour {
         if (c == null)
             return;
         Packet p = c.GetPacket();
+        Debug.Log("List");
         if (p != null) {
-            MarshalingManager.Unmarshall(play, l, p.buffer); 
+            Debug.Log("Connection");
+            //MarshalingManager.Unmarshall(p.buffer); 
         }
     }
 }

@@ -41,4 +41,8 @@ public class NetworkManager{
             p.Free();
         }
     }
+
+    internal void Listen(int port) {
+        c = new Channel(null , port);
+    }
 }

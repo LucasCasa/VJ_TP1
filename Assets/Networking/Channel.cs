@@ -10,7 +10,7 @@ public class Channel {
 
 	private const int CONNECTION_CLOSED_CODE = 10054;
 
-	private UdpClient udpSend = new UdpClient();
+    private UdpClient udpSend;
     private UdpClient udpReceive = new UdpClient();
     private System.Object bufferLock = new System.Object();
 	private List<Packet> packetBuffer = new List<Packet>();
@@ -18,16 +18,31 @@ public class Channel {
     private Thread receiveThread;
 	public Channel(string ip, int port) {
 		try {
-            udpReceive.Client.Bind(new IPEndPoint(IPAddress.Any, 42069));
-            udpSend.Connect(new IPEndPoint(IPAddress.Parse(ip), 42069));
+            if(ip != null) {
+                udpSend = new UdpClient();
+                udpSend.Connect(new IPEndPoint(IPAddress.Parse(ip), 42069));
+            }
+            Listen(port);
             //udpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-            receiveThread = new Thread(Receive);
-            receiveThread.Start();
         } catch (Exception e) {
 			Debug.Log("could not connect socket: " + e.Message);
 		}
 	}
 
+    public void Connect(EndPoint remote) {
+        udpSend = new UdpClient();
+        udpSend.Connect((IPEndPoint) remote);
+        Debug.Log("Connected to: " + remote.ToString());
+    }
+    public void Listen(int port) {
+        udpReceive.Client.Bind(new IPEndPoint(IPAddress.Any, port));
+        
+        receiveThread = new Thread(Receive);
+        receiveThread.Start();
+        Debug.Log("Listening IP:" + udpReceive.Client.LocalEndPoint);
+        Debug.Log("Listening port:" + port);
+
+    }
 	public void Disconnect() {
 		if (udpSend != null) {
 			Debug.Log("socket closed");
@@ -54,17 +69,16 @@ public class Channel {
 
 	private void Receive() {
 		IPEndPoint endPoint = new IPEndPoint(IPAddress.None, 0);
-        Debug.Log("Listening");
         EndPoint remoteEndPoint = (EndPoint) endPoint;
-        Debug.Log("Listening");
-        Debug.Log("Listening");
         while (udpReceive != null) {
 			try {
-                Debug.Log("Listening");
                 Packet packet = Packet.Obtain();
-                Debug.Log("Listening");
+                Debug.Log("SSS");
                 int byteCount = udpReceive.Client.ReceiveFrom(packet.buffer.GetBuffer().GetBuffer(), ref remoteEndPoint);
-                Debug.Log("received bytes " + byteCount);
+                Debug.Log("SSS");            
+                if(udpSend == null) {
+                    Connect(remoteEndPoint);
+                }
 				packet.buffer.SetAvailableByteCount(byteCount);
 				lock (bufferLock) {
 					packetBuffer.Add(packet);
@@ -82,8 +96,7 @@ public class Channel {
 	public void Send(Packet packet) {		
 		if (udpSend != null) {
             Debug.Log("send " + packet.buffer.GetAvailableByteCount());
-			int s = udpSend.Send(packet.buffer.GetBuffer().GetBuffer(), packet.buffer.GetAvailableByteCount());
-            Debug.Log("Sent: " + s);
+            int s = udpSend.Send(packet.buffer.GetBuffer().GetBuffer(), packet.buffer.GetAvailableByteCount());
 		}
 	}
 

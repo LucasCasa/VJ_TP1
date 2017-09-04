@@ -49,6 +49,7 @@ public class Buttons : MonoBehaviour{
         hosting.SetActive(true);
         starting.SetActive(false);
         //GameObject.Find("Show Server").GetComponent<Text>().text = Channel.getInstance().getServer();
+        NetworkManager.getInstance().Listen(42069);
     }
 
     public void Join() {
