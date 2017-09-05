@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PowerUpCreator : MonoBehaviour
 {
-    public float maxTime = 10;
-    public float minTime = 5;
+    public float maxTime;
+    public float minTime;
 
     //current time
     private float time;
@@ -48,10 +48,11 @@ public class PowerUpCreator : MonoBehaviour
     GameObject RandomPowerUp()
     {
         int r = Mathf.FloorToInt(Random.Range(0, 2));
+        Debug.Log("r: " + r);
         switch (r)
         {
-            case 0: return obj;
-            case 1: return slow;
+            case 0: return slow;
+            case 1: return obj;
             default:
                 return null;
         }
