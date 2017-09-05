@@ -806,8 +806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e14e9b343401744b6726e0c1c43567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  play: {fileID: 0}
-  l: {fileID: 0}
 --- !u!4 &769454195
 Transform:
   m_ObjectHideFlags: 0
@@ -1083,7 +1081,7 @@ SpriteRenderer:
   m_Size: {x: 4.07, y: 1.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1134077664
 GameObject:

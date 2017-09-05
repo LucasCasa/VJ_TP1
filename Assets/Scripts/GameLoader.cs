@@ -31,7 +31,7 @@ public class GameLoader : MonoBehaviour {
 
         } else {
             Debug.Log("Seteo un nuevo single");
-           // GameObject.Find("Player2").SetActive(false);
+            GameObject.Find("Player2").SetActive(false);
             multiplayer = false;
             p1Text.text = ("Score: ");
             GameObject.Find("BlueScore").SetActive(false);
@@ -77,10 +77,10 @@ public class GameLoader : MonoBehaviour {
     void CheckEnd() {
         bool p1 = false;
         bool p2 = false;
-        if(player1.score > player2.score + 10 || player2.isDead) {
+        if((multiplayer && player1.score > player2.score + 10) || player2.isDead) {
             p1 = true;
         }
-        if(player2.score > player1.score + 10 || player1.isDead){
+        if((multiplayer && player2.score > player1.score + 10) || player1.isDead){
             p2 = true;
         }
         if (p2 || p1) {
@@ -95,17 +95,7 @@ public class GameLoader : MonoBehaviour {
             SceneManager.LoadScene("end");
         }
     }
-    private void FixedUpdate() {
-        send++;
-        if (send == 1) {
-            Packet p = Packet.Obtain();
-            MarshalingManager.Marshall(p1, t, p);
-            p.buffer.Flip();
-            NetworkManager.getInstance().getChannel().Send(p);
-            p.Free();
-            send = 0;
-        }
-    }
+
     void OnGUI() {
         if (multiplayer) {
             p1Text.text = ("Red: " + player1.score);
