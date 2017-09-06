@@ -13,7 +13,7 @@ public class PowerUpCreator : MonoBehaviour
     //The time to spawn the object
     private float spawnTime;
 
-    public GameObject obj;
+    public GameObject speed;
     public GameObject slow;
 
     void Start()
@@ -52,7 +52,7 @@ public class PowerUpCreator : MonoBehaviour
         switch (r)
         {
             case 0: return slow;
-            case 1: return obj;
+            case 1: return speed;
             default:
                 return null;
         }

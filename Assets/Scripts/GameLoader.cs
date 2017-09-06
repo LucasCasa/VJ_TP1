@@ -14,49 +14,29 @@ public class GameLoader : MonoBehaviour {
     public Text p2Text;
     public GameObject paused;
     public int send = 0;
+    public ModeSaver ms;
 	// Use this for initialization
 	void Start () {
         paused = GameObject.Find("Paused");
         paused.SetActive(false);
+       
     }
 	void Awake() {
 
     }
     void OnEnable() {
-        Debug.Log(GameObject.Find("Mode Saver").GetComponent<ModeSaver>().singlePlayer);
-        if (!GameObject.Find("Mode Saver").GetComponent<ModeSaver>().singlePlayer) {
-            Debug.Log("Seteo un nuevo multi");
-            GameObject.Find("Player2").SetActive(true);
-            multiplayer = true;
-
-        } else {
-            Debug.Log("Seteo un nuevo single");
+        ms = GameObject.Find("Mode Saver").GetComponent<ModeSaver>();
+        if (ms.singlePlayer) {
             GameObject.Find("Player2").SetActive(false);
             multiplayer = false;
             p1Text.text = ("Score: ");
             GameObject.Find("BlueScore").SetActive(false);
+        } else {
+            GameObject.Find("Player2").SetActive(true);
+            multiplayer = true;
         }
         GameObject.Find("Audio Source").GetComponent<AudioSource>().Play();
-        /*LineRenderer lr = GameObject.Find("Wall").GetComponent<LineRenderer>();
-        lr.positionCount = 5;
-        float min = Mathf.Min(Screen.width, Screen.height);
-        float top = 0.8f*min;
-        float bottom = 0.2f * min;
-        List<Vector2> s = new List<Vector2>();
-        s.Add(new Vector2(top, top));
-        s.Add(new Vector2(top, bottom));
-        s.Add(new Vector2(bottom, bottom));
-        s.Add(new Vector2(bottom, top));
-        s.Add(new Vector2(top, top));
-        lr.SetPosition(0, Camera.main.ScreenToWorldPoint(s[0]));
-        lr.SetPosition(1, Camera.main.ScreenToWorldPoint(s[1]));
-        lr.SetPosition(2, Camera.main.ScreenToWorldPoint(s[2]));
-        lr.SetPosition(3, Camera.main.ScreenToWorldPoint(s[3]));
-        lr.SetPosition(4, Camera.main.ScreenToWorldPoint(s[4]));
-        EdgeCollider2D ed2d = GameObject.Find("Wall").GetComponent<EdgeCollider2D>();
-        Vector2[] vs = s.ToArray();
-        ed2d.points = vs;
-        Debug.Log("Arena Set");*/
+      
     }
 	// Update is called once per frame
 	void Update () {
@@ -85,11 +65,12 @@ public class GameLoader : MonoBehaviour {
         }
         if (p2 || p1) {
             if (!p1) {
-                GameObject.Find("Mode Saver").GetComponent<ModeSaver>().whoWon = 2;
+                ms.whoWon = 2;
+                ms.score = player1.score;
             } else if (!p2) {
-                GameObject.Find("Mode Saver").GetComponent<ModeSaver>().whoWon = 1;
+                ms.whoWon = 1;
             } else {
-                GameObject.Find("Mode Saver").GetComponent<ModeSaver>().whoWon = 0;
+                ms.whoWon = 0;
             }
             GameObject.Find("Audio Source").GetComponent<AudioSource>().Stop();
             SceneManager.LoadScene("end");

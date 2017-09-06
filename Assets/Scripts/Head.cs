@@ -11,6 +11,7 @@ public class Head : MonoBehaviour {
     public bool isDead = false;
     public int size = 10;
     public int score = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,14 +20,9 @@ public class Head : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		horizontal = -Input.GetAxisRaw (inputAxes);
-        transform.Translate(Vector3.up * speed * Time.fixedDeltaTime, Space.Self);
-        transform.Rotate(horizontal * Vector3.forward * rotationSpeed * Time.fixedDeltaTime);
+        transform.Translate(Vector3.up * speed * Time.deltaTime, Space.Self);
+        transform.Rotate(horizontal * Vector3.forward * rotationSpeed * Time.deltaTime);
     }
-
-	void FixedUpdate(){
-		
-        //NetworkManager.getInstance().Send(transform.position, transform.rotation);
-	}
 
 	void OnTriggerEnter2D(Collider2D other){
         if (other.name == "Food") {

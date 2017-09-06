@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 9
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 8
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -87,7 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -365,6 +365,7 @@ MonoBehaviour:
   p2Text: {fileID: 53773995}
   paused: {fileID: 0}
   send: 0
+  ms: {fileID: 0}
 --- !u!1 &512475237
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +479,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &512475242
 Transform:
   m_ObjectHideFlags: 0
@@ -526,7 +526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522486164}
   - component: {fileID: 522486165}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ui back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,11 +540,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 522486163}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7591.4263}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 2140098971}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &522486165
 SpriteRenderer:
@@ -577,8 +577,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 24800c290c8c9e649975924dde75bbfe, type: 3}
+  m_SortingOrder: 6
+  m_Sprite: {fileID: 21300000, guid: a6227ddfb5b95a14c9024112251b60f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -586,8 +586,7 @@ SpriteRenderer:
   m_Size: {x: 7.16, y: 1.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
+  m_WasSpriteAssigned: 1
 --- !u!1 &560156633
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,16 +762,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c611b5b005a2367469e327b56703fd6c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1124771a6029979469a84baa2d01ed6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &721216920
 Transform:
   m_ObjectHideFlags: 0
@@ -867,7 +865,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 24800c290c8c9e649975924dde75bbfe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6227ddfb5b95a14c9024112251b60f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -875,8 +873,7 @@ SpriteRenderer:
   m_Size: {x: 7.16, y: 1.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
+  m_WasSpriteAssigned: 1
 --- !u!1 &923284218
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,7 +885,6 @@ GameObject:
   - component: {fileID: 923284221}
   - component: {fileID: 923284220}
   - component: {fileID: 923284219}
-  - component: {fileID: 923284223}
   m_Layer: 0
   m_Name: Tail P2
   m_TagString: Untagged
@@ -933,7 +929,7 @@ LineRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 923284218}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_MotionVectors: 0
   m_LightProbeUsage: 0
@@ -1008,7 +1004,6 @@ LineRenderer:
     numCapVertices: 1
     alignment: 0
     textureMode: 1
-    generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
 --- !u!4 &923284222
@@ -1024,17 +1019,6 @@ Transform:
   m_Father: {fileID: 1090550271}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &923284223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 923284218}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6f167b1e9ca07b4f9b8574d2ea515e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &971763764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,7 +1206,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 24800c290c8c9e649975924dde75bbfe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6227ddfb5b95a14c9024112251b60f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1230,8 +1214,7 @@ SpriteRenderer:
   m_Size: {x: 7.16, y: 1.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
+  m_WasSpriteAssigned: 1
 --- !u!1 &1293083583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,7 +1345,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 5db87b0403a51ad4db11f0e856ee73a4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 39fa985335b5af24986dd4b82f495758, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1371,7 +1354,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1311650656
 Transform:
   m_ObjectHideFlags: 0
@@ -1421,7 +1403,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.36, y: 2.53}
+    oldSize: {x: 1.36, y: 2.56}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1439,7 +1421,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1339975428}
   - component: {fileID: 1339975427}
-  - component: {fileID: 1339975429}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -1456,7 +1437,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6598f4364c4ee7d438d279057fe33825, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d68ab78e932b73b4ca8baac27a290781, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1540,17 +1521,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1339975429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1339975426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01e14e9b343401744b6726e0c1c43567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1381483082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,7 +1549,7 @@ RectTransform:
   m_LocalScale: {x: 1.0003814, y: 1.0003814, z: 1.0003814}
   m_Children: []
   m_Father: {fileID: 2140098971}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1649,13 +1619,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1467564297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1b186677bad1264e8913510a1256a4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c33dff1ac0834b4890eeeef84850ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 15
-  minTime: 7
-  obj: {fileID: 1993387952721706, guid: 92ee2a2acd5eed744a9606983a5f471e, type: 2}
-  slow: {fileID: 1057808300785340, guid: 5d114dc7da8527b4aa597c51a3a1ad3e, type: 2}
+  maxTime: 5
+  minTime: 10
+  speed: {fileID: 1993387952721706, guid: 78a2099258a3e4f47811c00fefa3195b, type: 2}
+  slow: {fileID: 1057808300785340, guid: 7262a9de289c1a041911183cc6d0c972, type: 2}
 --- !u!4 &1467564299
 Transform:
   m_ObjectHideFlags: 0
@@ -1761,7 +1731,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
 --- !u!4 &1603026740
 Transform:
   m_ObjectHideFlags: 0
@@ -1832,7 +1801,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1628947099
 Transform:
   m_ObjectHideFlags: 0
@@ -1886,13 +1854,13 @@ LineRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1650158061}
   m_Enabled: 1
-  m_CastShadows: 2
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4f12fcd9c9f27ae45b6c1a38c3a8e9cd, type: 2}
+  - {fileID: 2100000, guid: 165de0e1c2633fd4b82dd6849ef0ce00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1961,7 +1929,6 @@ LineRenderer:
     numCapVertices: 1
     alignment: 0
     textureMode: 1
-    generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
 --- !u!4 &1650158064
@@ -2093,7 +2060,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1665164588
 Transform:
   m_ObjectHideFlags: 0
@@ -2157,7 +2123,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 00e8d1aeba1807a49b58736f8ecc392a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b6aa641ea0bf94247bdc7fd08933eb66, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2253,13 +2219,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1381483083}
   - {fileID: 522486164}
+  - {fileID: 1381483083}
   m_Father: {fileID: 574264539}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000047683716, y: 0.00000023841858}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

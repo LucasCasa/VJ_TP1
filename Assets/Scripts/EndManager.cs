@@ -9,8 +9,8 @@ public class EndManager : MonoBehaviour {
 	void Start () {
         ModeSaver ms = GameObject.Find("Mode Saver").GetComponent<ModeSaver>();
         if (ms.singlePlayer) {
-            text.text = "Loser";
-            
+            text.text = "FINAL SCORE\n" + ms.score;
+            text.fontSize = 72;
         } else {
             switch(ms.whoWon) {
                 case 1:

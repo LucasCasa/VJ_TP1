@@ -5,6 +5,7 @@ using UnityEngine;
 public class ModeSaver : MonoBehaviour {
     public bool singlePlayer = false;
     public int whoWon = 0;
+    public int score;
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(transform.gameObject);
@@ -16,17 +17,9 @@ public class ModeSaver : MonoBehaviour {
 	}
 
     public void setSinglePlayer() {
-        Debug.Log("Seteo single");
         singlePlayer = true;
-        Debug.Log(singlePlayer);
     }
     public void setMultiPlayer() {
-        Debug.Log("Seteo Multi");
         singlePlayer = false;
-        Debug.Log(singlePlayer);
-    }
-
-    private void OnApplicationQuit() {
-        NetworkManager.getInstance().Close();
     }
 }
