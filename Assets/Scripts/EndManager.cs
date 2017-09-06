@@ -15,15 +15,15 @@ public class EndManager : MonoBehaviour {
             switch(ms.whoWon) {
                 case 1:
                     text.text = "Red wins";
-                    text.color = Color.red;
+                    text.color = new Color(0.7f,0,0);
                     break;
                 case 2:
                     text.text = "Blue wins";
-                    text.color = Color.cyan;
+                    text.color = new Color(0, 0, 0.7f);
                     break;
                 case 0:
                     text.text = "Draw";
-                    text.color = Color.white;
+                    text.color = new Color(0.7f, 0, 0.7f);
                     break;
 
             }

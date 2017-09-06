@@ -21,42 +21,29 @@ public class Line : MonoBehaviour {
 	void Update () {
 		if (points.Count == 0 || Vector3.Distance (points.Last (), head.position) > pointsSpacing) {
 			setPoint(true);
-        }
-        else{
+        } else{
             setPoint(false);
         }
 	}
 
 	void setPoint(bool addHead){
-        if (points.Count > 2)
-            col.points = points.ToArray<Vector2>();
-        if (addHead)
-        {
+        if (addHead) {
+            if (points.Count > 2)
+                col.points = points.ToArray<Vector2>();
+
             points.Add(head.position);
-            if (points.Count > h.size)
-            {
-                points.RemoveAt(0);
+            if (points.Count > h.size) {
                 ln.positionCount = points.Count;
-                for (int i = 0; i < points.Count; i++)
-                {
+                for (int i = 0; i < points.Count; i++) {
                     ln.SetPosition(i, points[i]);
                 }
-
-            }
-            else
-            {
+                points.RemoveAt(0);
+            } else {
                 ln.positionCount = points.Count;
                 ln.SetPosition(points.Count - 1, head.position);
             }
-        }
-        else
-        {
-            ln.positionCount = points.Count;
+        } else {
             ln.SetPosition(points.Count-1, head.position);
-            for(int i=0; i<points.Count-1; i++)
-            {
-                ln.SetPosition(i, points[i + 1]);
-            }
         }
     }
 }

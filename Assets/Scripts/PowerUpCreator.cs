@@ -41,14 +41,12 @@ public class PowerUpCreator : MonoBehaviour
     //Spawns the object and resets the time
     void SpawnPowerUp()
     {
-        Debug.Log("Creating powerup");
         Instantiate(RandomPowerUp());
     }
 
     GameObject RandomPowerUp()
     {
         int r = Mathf.FloorToInt(Random.Range(0, 2));
-        Debug.Log("r: " + r);
         switch (r)
         {
             case 0: return slow;
